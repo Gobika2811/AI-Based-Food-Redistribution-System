@@ -1,0 +1,121 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Windows: Setup Backend Environment",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "cd backend; python -m venv venv; .\\venv\\Scripts\\Activate.ps1; pip install -r requirements.txt; pip install gevent"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Windows: Setup AI Service Environment",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "cd ai-service; python -m venv venv; .\\venv\\Scripts\\Activate.ps1; pip install -r requirements.txt"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Windows: Setup Frontend Environment",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "cd frontend; npm install"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Backend",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "cd backend; .\\venv\\Scripts\\Activate.ps1; uvicorn main:app --host 127.0.0.1 --port 8000 --reload"
+      ],
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Uvicorn running on",
+          "endsPattern": "Uvicorn running on"
+        }
+      }
+    },
+    {
+      "label": "Start AI Service",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "cd ai-service; .\\venv\\Scripts\\Activate.ps1; uvicorn main:app --host 127.0.0.1 --port 8001 --reload"
+      ],
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Uvicorn running on",
+          "endsPattern": "Uvicorn running on"
+        }
+      }
+    },
+    {
+      "label": "Start Frontend",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "cd frontend; npm run dev"
+      ],
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Local:",
+          "endsPattern": "Local:"
+        }
+      }
+    },
+    {
+      "label": "Start Celery Worker",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "cd backend; .\\venv\\Scripts\\Activate.ps1; celery -A tasks.celery_app worker --loglevel=info -P gevent"
+      ],
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

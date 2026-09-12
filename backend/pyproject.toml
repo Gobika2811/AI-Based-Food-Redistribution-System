@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "resqfood-backend"
+version = "0.1.0"
+description = "FastAPI backend for ResQFood redistribution system"
+authors = ["Admin <admin@resqfood.org>"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]

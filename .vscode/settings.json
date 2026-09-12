@@ -1,0 +1,26 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  },
+  "python.analysis.extraPaths": [
+    "./backend",
+    "./ai-service"
+  ],
+  "python.analysis.autoImportUserSymbols": true,
+  "tailwindCSS.experimental.classRegex": [
+    "glass-panel",
+    "text-gradient"
+  ],
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/node_modules": true,
+    "**/dist": true
+  }
+}
