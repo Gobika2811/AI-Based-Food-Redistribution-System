@@ -68,7 +68,7 @@ graph TD
 ## ⚡ Quickstart Guide (Windows)
 
 ### Option 1: 1-Click Launch (Recommended)
-Open PowerShell in `D:\ResQFood` and run:
+Open PowerShell in the root project folder and run:
 ```powershell
 .\start_all.ps1
 ```
@@ -77,7 +77,7 @@ Open PowerShell in `D:\ResQFood` and run:
 
 #### 1. Backend Service
 ```powershell
-cd D:\ResQFood\backend
+cd backend
 pip install -r requirements.txt
 uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 ```
@@ -85,7 +85,7 @@ API Documentation & Swagger UI: **http://127.0.0.1:8000/docs**
 
 #### 2. Frontend Web Platform
 ```powershell
-cd D:\ResQFood\frontend
+cd frontend
 npm install
 npm run dev
 ```
@@ -111,7 +111,6 @@ The platform includes a built-in persona switcher on the top navigation bar, or 
 A comprehensive test suite verifying the authentication, AI waste risk scoring, donation lifecycle, OTP verification, and impact analytics is included:
 
 ```powershell
-cd D:\ResQFood
 pytest tests/test_backend.py -v
 ```
 
